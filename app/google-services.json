@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "955296425313",
+    "firebase_url": "https://petz-homes-e1192.firebaseio.com",
+    "project_id": "petz-homes-e1192",
+    "storage_bucket": "petz-homes-e1192.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955296425313:android:c97220006ad133ff311120",
+        "android_client_info": {
+          "package_name": "com.example.petzhomes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955296425313-cqfg96nbsbu41q1li7j11opdu8t0bp9i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.petzhomes",
+            "certificate_hash": "05289d03081ed6ad85f4c2dcd5f0384f899d88b1"
+          }
+        },
+        {
+          "client_id": "955296425313-bsjipv0nfp5fsjae41tcgjdnevl41nfb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWvC7pRISarWeGRnxfGOS37f9zEflDgk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955296425313-bsjipv0nfp5fsjae41tcgjdnevl41nfb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
