@@ -3,14 +3,17 @@ package com.example.petzhomes.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.security.keystore.UserPresenceUnavailableException;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.petzhomes.R;
 import com.example.petzhomes.config.ConfiguracaoFirebase;
+import com.example.petzhomes.config.UsuarioFirebase;
 import com.example.petzhomes.modal.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private TextInputEditText editEmail, editSenha;
     private FirebaseAuth autenticacao;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
         editEmail = findViewById(R.id.editEmail);
         editSenha = findViewById(R.id.editSenha);
+        progressBar = findViewById(R.id.progressBar);
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
 
     }
@@ -41,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser usuarioAtual = autenticacao.getCurrentUser();
+        progressBar.setVisibility(View.GONE);
         if(usuarioAtual != null){
             abrirMainActivity();
         }
@@ -92,13 +98,11 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-
     public void cadastrarSe(View view){
         startActivity(new Intent(LoginActivity.this, CadastroActivity.class));
     }
-
     private void abrirMainActivity(){
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        progressBar.setVisibility(View.VISIBLE);
+        UsuarioFirebase.redirecionarUsuarioLogado(LoginActivity.this);
     }
-
 }

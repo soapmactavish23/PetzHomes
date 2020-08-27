@@ -8,9 +8,22 @@
     android:padding="20dp"
     tools:context=".activity.CadastroActivity">
 
-    <ScrollView
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scrollView2" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -186,7 +199,7 @@
                 android:textColor="#FFFFFF" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/txtNomeUsuarioHeader"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_arrow_back"
