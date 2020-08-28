@@ -1,9 +1,11 @@
 package com.example.petzhomes.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.example.petzhomes.R;
 import com.example.petzhomes.config.ConfiguracaoFirebase;
@@ -11,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
 import androidx.navigation.NavController;
@@ -25,6 +28,8 @@ public class ParceiroActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private FirebaseAuth autenticacao;
+    private TextView txtNomeHeader, txtEmailHeader;
+    private FirebaseUser usuarioAtual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,10 @@ public class ParceiroActivity extends AppCompatActivity {
 
         //Firebase
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+
+        //Navigation
+        usuarioAtual = autenticacao.getCurrentUser();
+
     }
 
     @Override
@@ -65,6 +74,9 @@ public class ParceiroActivity extends AppCompatActivity {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
+                break;
+            case R.id.config:
+                startActivity(new Intent(ParceiroActivity.this, ConfiguracaoActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
