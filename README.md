@@ -1,10 +1,24 @@
 # PetzHomes
 
 # Missoes PARCEIRO
-1. Menu [Configurações, Sair]
-2. Servicos;
-3. Produtos;
-5. Painel;
+1. Menu {
+    Sair => OK
+    Configurações: {
+      Padrão Instagram
+    }, 
+  }
+2. Servicos{
+  Listar Serviços
+  Cadastrar novo serviço
+}
+3. Produtos{
+  Listar Serviços
+  Cadastrar novo serviço
+}
+5. Painel {
+  Principais Serviços;
+  Principais Produtos;
+}
 
 # Missoes Entregador
 1. Menu;
