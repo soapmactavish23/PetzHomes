@@ -2,7 +2,10 @@ package com.example.petzhomes.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.util.Log;
+=======
+>>>>>>> bdf656a6a0651a2a9793adbc6c0006a2b43663e2
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
@@ -10,13 +13,17 @@ import android.widget.TextView;
 
 import com.example.petzhomes.R;
 import com.example.petzhomes.config.ConfiguracaoFirebase;
+<<<<<<< HEAD
 import com.example.petzhomes.config.UsuarioFirebase;
 import com.example.petzhomes.modal.Usuario;
+=======
+>>>>>>> bdf656a6a0651a2a9793adbc6c0006a2b43663e2
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+<<<<<<< HEAD
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,6 +32,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+=======
+
+import androidx.annotation.NonNull;
+>>>>>>> bdf656a6a0651a2a9793adbc6c0006a2b43663e2
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -85,6 +96,7 @@ public class ParceiroActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.config:
+<<<<<<< HEAD
                 DatabaseReference databaseReference = ConfiguracaoFirebase.getFirebaseDatabase();
                 databaseReference.child("usuarios")
                         .child(UsuarioFirebase.getIdentificadorUsuario())
@@ -102,6 +114,9 @@ public class ParceiroActivity extends AppCompatActivity {
 
                             }
                         });
+=======
+                startActivity(new Intent(ParceiroActivity.this, ConfiguracaoActivity.class));
+>>>>>>> bdf656a6a0651a2a9793adbc6c0006a2b43663e2
                 break;
         }
         return super.onOptionsItemSelected(item);
