@@ -48,4 +48,11 @@ dependencies {
     //Mask
     implementation 'com.github.rtoshiro.mflibrary:mflibrary:1.0.0'
 
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //SmartTabLayout
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
+    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+
 }

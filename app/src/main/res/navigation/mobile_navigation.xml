@@ -7,37 +7,31 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.petzhomes.activity.ui.home.HomeFragment"
+        android:name="com.example.petzhomes.fragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home">
 
-        <action
+        <!--action
             android:id="@+id/action_HomeFragment_to_HomeSecondFragment"
-            app:destination="@id/nav_home_second" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_home_second"
-        android:name="com.example.petzhomes.activity.ui.home.HomeSecondFragment"
-        android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
-        <action
-            android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
-            app:destination="@id/nav_home" />
-
-        <argument
-            android:name="myArg"
-            app:argType="string" />
+            app:destination="@id/nav_home" /-->
     </fragment>
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.petzhomes.activity.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/nav_servico"
+        android:name="com.example.petzhomes.fragment.ServicosParceiroFragment"
+        android:label="@string/menu_servico"
+        tools:layout="@layout/fragment_servicos_parceiro" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.petzhomes.activity.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/nav_produto"
+        android:name="com.example.petzhomes.fragment.ProdutoParceiroFragment"
+        android:label="@string/menu_produto"
+        tools:layout="@layout/fragment_produto_parceiro" />
+
+    <fragment
+        android:id="@+id/nav_entregadores"
+        android:name="com.example.petzhomes.fragment.EntregadoresParceiroFragment"
+        android:label="@string/menu_entregadores"
+        tools:layout="@layout/fragment_entregadores_parceiro" />
+
 </navigation>

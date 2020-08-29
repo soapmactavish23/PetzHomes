@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class CadastroActivity extends AppCompatActivity {
     private TextInputEditText editNome, editEmail, editSenha, editConfirmarSenha, editCpf, editContato;
     private SeekBar seekBar;
     private FirebaseAuth autenticacao;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class CadastroActivity extends AppCompatActivity {
         editCpf = findViewById(R.id.editCPF);
         editContato = findViewById(R.id.editContato);
         seekBar = findViewById(R.id.seekBar);
+        progressBar = findViewById(R.id.progressBar2);
 
         //Criando Formato da Mascara
         SimpleMaskFormatter simpleMaskFormatterCPF = new SimpleMaskFormatter("NNN.NNN.NNN-NN");
@@ -57,6 +60,12 @@ public class CadastroActivity extends AppCompatActivity {
         editCpf.addTextChangedListener(maskTextWatcherCPF);
         editContato.addTextChangedListener(maskTextWatcherContato);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        progressBar.setVisibility(View.GONE);
     }
 
     public void voltar(View view){
@@ -140,7 +149,8 @@ public class CadastroActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT
                         ).show();
 
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        progressBar.setVisibility(View.GONE);
+                        UsuarioFirebase.redirecionarUsuarioLogado(CadastroActivity.this);
                         finish();
 
                     }catch (Exception e){
