@@ -27,6 +27,12 @@ import com.example.petzhomes.config.UsuarioFirebase;
 import com.example.petzhomes.helper.Base64Custom;
 import com.example.petzhomes.helper.Permissao;
 import com.example.petzhomes.modal.Usuario;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -47,12 +53,13 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EnderecoFragment extends Fragment {
+public class EnderecoFragment extends Fragment{
+
+    private GoogleMap mMap;
 
     public EnderecoFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,8 +68,6 @@ public class EnderecoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_endereco, container, false);
 
 
-
         return view;
     }
-
 }

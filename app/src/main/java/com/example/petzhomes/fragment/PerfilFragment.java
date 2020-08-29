@@ -67,7 +67,8 @@ public class PerfilFragment extends Fragment {
 
     private String[] permissoesNecessarias = new String[]{
             Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.CAMERA
+            Manifest.permission.CAMERA,
+            Manifest.permission.ACCESS_FINE_LOCATION
     };
 
     private static final int SELECAO_GALERIA = 200;
