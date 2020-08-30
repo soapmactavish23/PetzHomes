@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.security.keystore.UserPresenceUnavailableException;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.petzhomes.R;
@@ -18,6 +20,7 @@ import com.example.petzhomes.modal.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -26,9 +29,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private TextInputLayout textEmail, textSenha;
     private TextInputEditText editEmail, editSenha;
     private FirebaseAuth autenticacao;
     private ProgressBar progressBar;
+    private TextView txtNaoTemConta;
+    private Button btnEntrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,10 @@ public class LoginActivity extends AppCompatActivity {
         editSenha = findViewById(R.id.editSenha);
         progressBar = findViewById(R.id.progressBar);
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
+        textEmail = findViewById(R.id.textEmail);
+        textSenha = findViewById(R.id.textSenha);
+        txtNaoTemConta = findViewById(R.id.txtNaoTemConta);
+        btnEntrar = findViewById(R.id.btnEntar);
 
     }
 
@@ -48,7 +58,16 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUser usuarioAtual = autenticacao.getCurrentUser();
         progressBar.setVisibility(View.GONE);
         if(usuarioAtual != null){
+            textEmail.setVisibility(View.GONE);
+            textSenha.setVisibility(View.GONE);
+            btnEntrar.setVisibility(View.GONE);
+            txtNaoTemConta.setVisibility(View.GONE);
             abrirMainActivity();
+        }else{
+            textEmail.setVisibility(View.VISIBLE);
+            textSenha.setVisibility(View.VISIBLE);
+            btnEntrar.setVisibility(View.VISIBLE);
+            txtNaoTemConta.setVisibility(View.VISIBLE);
         }
     }
 
