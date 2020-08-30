@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import android.provider.MediaStore;
+import android.security.keystore.UserPresenceUnavailableException;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -122,7 +123,7 @@ public class PerfilFragment extends Fragment {
         usuarioAtual = (Usuario) bundle.getSerializable("DadosUsuario");
 
         //Carregar dados do usuario
-        txtNome.setText(usuarioPerfil.getDisplayName());
+        txtNome.setText(usuarioAtual.getNome());
         txtEmail.setText(usuarioPerfil.getEmail());
         txtContato.setText(usuarioAtual.getContato());
         txtCpf.setText(usuarioAtual.getCpf());
@@ -134,8 +135,6 @@ public class PerfilFragment extends Fragment {
         }else{
             imgEditarPerfil.setImageResource(R.drawable.padrao);
         }
-
-
 
         //Alterar Foto
         btnAlterarFoto.setOnClickListener(new View.OnClickListener() {
@@ -174,12 +173,16 @@ public class PerfilFragment extends Fragment {
 
     public void atualizarNome(){
         String nome = txtNome.getText().toString();
-        if(!nome.isEmpty()){
+        String cpf = txtCpf.getText().toString();
+        String contato = txtContato.getText().toString();
+        if(!nome.isEmpty() && !cpf.isEmpty() && !contato.isEmpty()){
             //Atualizar o nome no perfil
             UsuarioFirebase.atualizarNomeUsuario(nome);
 
             //Atualizar o nome no banco de dados
             usuarioLogado.setNome(nome);
+            usuarioLogado.setCpf(cpf);
+            usuarioLogado.setContato(contato);
             usuarioLogado.atualizar();
 
             Toast.makeText(
@@ -200,6 +203,8 @@ public class PerfilFragment extends Fragment {
         boolean retorno = UsuarioFirebase.atualizarFotoUsuario(url);
         if(retorno){
             usuarioLogado.setFoto(url.toString());
+            usuarioLogado.setCpf(usuarioAtual.getCpf());
+            usuarioLogado.setContato(usuarioAtual.getContato());
             usuarioLogado.atualizar();
             Toast.makeText(
                     getActivity(),
