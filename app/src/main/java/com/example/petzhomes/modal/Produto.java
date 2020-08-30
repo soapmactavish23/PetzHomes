@@ -1,50 +1,48 @@
 package com.example.petzhomes.modal;
 
-import android.provider.ContactsContract;
-
 import com.example.petzhomes.config.ConfiguracaoFirebase;
 import com.example.petzhomes.config.UsuarioFirebase;
-import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 
-public class Servico implements Serializable {
+public class Produto implements Serializable {
 
     private String id;
-    private String tipo;
+    private String idParceiro;
     private String descricao;
     private String valor;
-    private String idParceiro;
+    private String marca;
 
-    public Servico() {
+    public Produto() {
+
         //Gerar o id
         DatabaseReference databaseReference = ConfiguracaoFirebase.getFirebaseDatabase();
-        DatabaseReference servicoRef = databaseReference.child("servicos");
-        String idServico = servicoRef.push().getKey();
-        setId(idServico);
+        DatabaseReference produtoRef = databaseReference.child("produtos");
+        String idProduto = produtoRef.push().getKey();
+        setId(idProduto);
 
         //Receber o id do parceiro
         String idParceiro = UsuarioFirebase.getIdentificadorUsuario();;
         setIdParceiro(idParceiro);
+
     }
 
     public Boolean salvar(){
-        DatabaseReference servicosRef = ConfiguracaoFirebase.getFirebaseDatabase()
-                .child("servicos")
+        DatabaseReference produtoRef = ConfiguracaoFirebase.getFirebaseDatabase()
+                .child("produtos")
                 .child(getIdParceiro())
                 .child(getId());
-        servicosRef.setValue(this);
+        produtoRef.setValue(this);
         return true;
     }
+
     public Boolean deletar(){
-        DatabaseReference servicosRef = ConfiguracaoFirebase.getFirebaseDatabase()
-                .child("servicos")
+        DatabaseReference produtoRef = ConfiguracaoFirebase.getFirebaseDatabase()
+                .child("produtos")
                 .child(getIdParceiro())
                 .child(getId());
-        servicosRef.removeValue();
+        produtoRef.removeValue();
         return true;
     }
 
@@ -56,12 +54,12 @@ public class Servico implements Serializable {
         this.id = id;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getIdParceiro() {
+        return idParceiro;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setIdParceiro(String idParceiro) {
+        this.idParceiro = idParceiro;
     }
 
     public String getDescricao() {
@@ -80,11 +78,11 @@ public class Servico implements Serializable {
         this.valor = valor;
     }
 
-    public String getIdParceiro() {
-        return idParceiro;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setIdParceiro(String idParceiro) {
-        this.idParceiro = idParceiro;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 }
